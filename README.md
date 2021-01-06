@@ -32,7 +32,7 @@ If the mode equals zero, this is the training data. If the mode equals one, the 
     python roou.py --input XXX --fwhm XXX --sig XXX --figure XXX --mode 0
 ```
 XXX is your local address.
-examples:
+###examples:
 ```bash
     python tools/roou.py --input fitsdata/fits_train --fwhm 1.4 --sig 1.2 --figure figures --mode 0
     python tools/roou.py --input fitsdata/fits_test --fwhm 1.4 --sig 1.2 --figure figures --mode 1
