@@ -57,10 +57,13 @@ class CGAN(object):
             num = [0] * 9
             for i in range(1,9):
                 num[9-i]=size
-                size =(size+1)/2
+                #size =(size+1)/2
+                size =int((size+1)/2)
 
             d1 = deconv2d(tf.nn.relu(e8), [1,num[1],num[1],feature*8], name="d1")
+            print(d1.shape)
             d1 = tf.concat( [tf.nn.dropout(batch_norm(d1, "d1"), 0.5), e7],3)
+            print(d1.shape)
             d2 = deconv2d(tf.nn.relu(d1), [1,num[2],num[2],feature*8], name="d2")
             d2 = tf.concat( [tf.nn.dropout(batch_norm(d2, "d2"), 0.5), e6],3)
             d3 = deconv2d(tf.nn.relu(d2), [1,num[3],num[3],feature*8], name="d3")
