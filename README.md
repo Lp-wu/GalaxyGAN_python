@@ -21,6 +21,9 @@ this repo trains the data as numpy arrays while the other trains as .jpg .
 git clone https://github.com/Lp-wu/GalaxyGAN_python.git
 ```
 
+## Get Our FITS Files
+The data to download is about 5GB, after unzipping it will become about 16GB. Download this file from Google Drive: https://drive.google.com/open?id=1GCs02NBnr7X3skA04hyuXh6cUMZQLzVe
+
 ##Run our code
 
 ###Preprocess the .FITs
@@ -32,7 +35,9 @@ If the mode equals zero, this is the training data. If the mode equals one, the 
     python roou.py --input XXX --fwhm XXX --sig XXX --figure XXX --mode 0
 ```
 XXX is your local address.
+
 ###examples:
+
 ```bash
     python tools/roou.py --input fitsdata/fits_train --fwhm 1.4 --sig 1.2 --figure figures --mode 0
     python tools/roou.py --input fitsdata/fits_test --fwhm 1.4 --sig 1.2 --figure figures --mode 1
