@@ -1,0 +1,27 @@
+'''
+#2021/1/5 by wukangning
+#npy file to jpg file
+'''
+import numpy as np
+import os
+from PIL import Image
+import imageio
+
+def imsave(image,path):
+  return imageio.imwrite(path,image)
+
+Input_Dir_Path = r'./result'
+
+Out_Dir_Path = r'./result_jpg/'
+
+if not os.path.exists(Out_Dir_Path):
+  os.makedirs(Out_Dir_Path)
+
+Input_Image_Name_List = os.listdir(Input_Dir_Path)
+print(Input_Image_Name_List)
+for image_name in Input_Image_Name_List:
+  print(image_name)
+  all = np.load(Input_Dir_Path+'/'+image_name)
+  print(all.shape)
+  print(all)
+  imsave(all,Out_Dir_Path + "/%s" % image_name+'.jpg')
