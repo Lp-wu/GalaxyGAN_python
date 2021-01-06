@@ -64,7 +64,7 @@ def train():
             sess.run(tf.global_variables_initializer())
         else:
             saver.restore(sess, conf.model_path)
-        for epoch in xrange(start_epoch, conf.max_epoch):
+        for epoch in range(start_epoch, conf.max_epoch):
             train_data = data["train"]()
             for img, cond, _ in train_data:
                 img, cond = prepocess_train(img, cond)
@@ -72,11 +72,11 @@ def train():
                 _, m = sess.run([d_opt, model.d_loss], feed_dict={model.image:img, model.cond:cond})
                 _, M, flux = sess.run([g_opt, model.g_loss, model.delta], feed_dict={model.image:img, model.cond:cond})
                 counter += 1
-                print "Iterate [%d]: time: %4.4f, d_loss: %.8f, g_loss: %.8f, flux: %.8f"\
-                      % (counter, time.time() - start_time, m, M, flux)
+                print("Iterate [%d]: time: %4.4f, d_loss: %.8f, g_loss: %.8f, flux: %.8f"\
+                      % (counter, time.time() - start_time, m, M, flux))
             if (epoch + 1) % conf.save_per_epoch == 0:
                 save_path = saver.save(sess, conf.save_path + "/model.ckpt")
-                print "Model saved in file: %s" % save_path
+                print("Model saved in file: %s" % save_path)
 
                 log = open(conf.save_path + "/log", "w")
                 log.write(str(epoch + 1))
@@ -94,5 +94,6 @@ def train():
 
 if __name__ == "__main__":
     os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"   # see issue #152
-    os.environ["CUDA_VISIBLE_DEVICES"]=str(conf.use_gpu)
+    #os.environ["CUDA_VISIBLE_DEVICES"]=str(conf.use_gpu)
+    os.environ["CUDA_VISIBLE_DEVICES"]='0,1,2,3,4,5'
     train()
