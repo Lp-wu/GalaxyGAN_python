@@ -18,7 +18,7 @@ this repo trains the data as numpy arrays while the other trains as .jpg .
 ### Getting Started
 - Clone this repo:
 ```bash
-git clone https://github.com/Ireneruru/GalaxyGAN_python.git
+git clone https://github.com/Lp-wu/GalaxyGAN_python.git
 ```
 
 ##Run our code
